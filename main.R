@@ -270,7 +270,8 @@ figure5 <- ggplot(pred_grid, aes(x = genderdiff_nonabs, y = predicted_prob, colo
   theme_minimal()
 ggsave("figures/figure_5.png", figure5, width = 16, height = 9, dpi = 300)
 
-## Suggested Extension (Jing Ling Tan)
+################################################################################
+## Suggested Extensions 
 
 ## 1 Improving interpretation of coefficients by standardizing gender difference
 
@@ -282,7 +283,7 @@ expanded_df <- expanded_df %>%
 m_partial_standardized <- glm(outcome ~ genderdiff_nonabs_z * party_control_scale,
                               data = expanded_df, family = binomial(link = "logit"))
 
-# Display the model results in a nicely formatted table
+# Display the model in a stargazer table
 stargazer(m_partial_standardized, type = "text", 
           title = "Effect of Standardized Gender Difference and Non-Standardized Party Control on Policy Responsiveness",
           dep.var.labels = "Policy Outcome",
